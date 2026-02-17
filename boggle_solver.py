@@ -7,7 +7,7 @@ class Boggle:
     def setGrid(self,grid):
       self.grid =[]
       for row in grid:
-         clean_row = [tile.upper() for tile in row] 
+         clean_row = [tile.upper() for tile in row] #making every tile uppercase
          self.grid.append(clean_row)
 
  
@@ -15,7 +15,7 @@ class Boggle:
       self.dictionary = set()#set()so no duplicates
       for word in dictionary:
          word = word.upper()#upper case each word
-         if len(word) >= 3 and word.isalpha:# if > 3 and letters
+         if len(word) >= 3 and word.isalpha():# if > 3 and letters
             self.dictionary.add(word)
          else:
             pass
@@ -23,17 +23,24 @@ class Boggle:
 
 
     def findWords(self,word,row,col,visited):
-      #no less than 3 letters for word
+       tile = self.grid[row][col]#the order when search
+       if word[index:index+len(tile)] == tile:#num letter = len of string
+          new_index = index + len(tile)#goes to next index
+       if new_index == len(word):
+          self.solution.add(word)
+         
+         
+       
 
     def getSolution(self):
       #test cases Qu as one cube 
 
-def main():#use getter and setter methods here
-    grid = [["T", "W", "Y", "R"], ["E", "N", "P", "H"],["G", "Z", "Qu", "R"],["O", "N", "T", "A"]]
-    dictionary = ["art", "ego", "gent", "get", "net", "new", "newt", "prat", "pry", "qua", "quart", "quartz", "rat", "tar", "tarp", "ten", "went", "wet", "arty", "rhr", "not", "quar"]
+def main(): 
+   grid = [["T", "W", "Y", "R"], ["E", "N", "P", "H"],["G", "Z", "Qu", "R"],["O", "N", "T", "A"]]
+   dictionary = ["art", "ego", "gent", "get", "net", "new", "newt", "prat", "pry", "qua", "quart", "quartz", "rat", "tar", "tarp", "ten", "went", "wet", "arty", "rhr", "not", "quar"]
     
-    mygame = Boggle(grid, dictionary)
-    print(mygame.getSolution())
+   mygame = Boggle(grid, dictionary)
+   print(mygame.getSolution())
 
 # def array_read()
 if __name__ == "__main__":
