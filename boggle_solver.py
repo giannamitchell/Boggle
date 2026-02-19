@@ -16,10 +16,18 @@ class Boggle:
       for word in dictionary:
          word = word.upper()#upper case each word
          if len(word) >= 3 and word.isalpha():# if > 3 and letters
-            self.dictionary.add(word)
+            continue
          else:
             pass
+         if "S" in word and "ST" not in word:
+              continue
+         if "Q" in word and "QU" not in word:
+                continue
+         if "I" in word and "IE" not in word:
+                continue
                #set()so no duplicates/is alpha so upper case/no less than 3 
+         self.dictionary.add(word)
+         
 
 
     def findWords(self,word,row,col,index,visited):
